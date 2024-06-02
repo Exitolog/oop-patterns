@@ -155,8 +155,7 @@ public final class Calculator implements Calculable {
     public void clear() {
             this.result = null;
         }
-        
-        
+
     public int parseInt(String a){
         return Integer.parseInt(a);
     }
