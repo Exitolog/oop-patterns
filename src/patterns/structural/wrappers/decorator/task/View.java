@@ -32,9 +32,9 @@ public class View {
     }
 
     private void prepare() {
-        double a = promptInt("Enter first argument: ");
+        String a = promptInt("Enter first argument: ");
         String operator = getOperator();
-        double b = promptInt("Enter second argument: ");
+        String b = promptInt("Enter second argument: ");
 
         if (operator.equals("*")) {
             calculator.multiply(a, b);
@@ -78,16 +78,22 @@ public class View {
         return !validOperators.contains(operator);
     }
 
-    private  int promptInt(String message) {
+    private  String promptInt(String message) {
         Scanner in = new Scanner(System.in);
         System.out.print(message);
-        int result = -1;
+        String result = in.nextLine();
         try {
-            result = Integer.parseInt(in.nextLine());
+            if(result.matches("\\-?[0-9]*\\s[\\*\\+\\-\\/]\\s[0-9]+i")){
+                return result;
+            }
+            else {
+                System.err.println("Not number was enter. Please enter number");
+              return promptInt(message);
+            }
         } catch (NumberFormatException e) {
             System.err.println("Not number was enter. Please enter number");
-            promptInt(message);
+           return promptInt(message);
         }
-        return result;
+
     }
 }

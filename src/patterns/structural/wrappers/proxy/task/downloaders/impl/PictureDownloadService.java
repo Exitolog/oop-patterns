@@ -9,7 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
-public class PictureDownloadService {
+public class PictureDownloadService implements Proxyable {
     private final String PREFIX = "https://w.forfun.com/fetch/";
     private final PictureComparator comparator = new PictureComparator();
 
